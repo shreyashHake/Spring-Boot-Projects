@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 1.   Property initialization: Using property -> we follow setter injection-->
+
+    <bean id="triangle" class="com.hitachi.Triangle">
+        <property name="type" value="Equilateral"/>
+    </bean>
+
+    <bean id="circle" class="com.hitachi.Circle">
+        <property name="radius" value="24"/>
+    </bean>
+
+    <!-- 2. Constructor injection  : (member variable) multiple ways to do that-->
+
+    <bean id="triangle_02" class="com.hitachi.Triangle_02">
+        <!--        <constructor-arg index="0" value="Right"/>-->
+        <!--        <constructor-arg index="1" value="24"/>-->
+
+        <constructor-arg type="java.lang.String" value="Isosceles"/>
+        <constructor-arg type="int" value="34"/>
+
+        <!--        <constructor-arg  value="Isosceles"/>-->
+        <!--        <constructor-arg  value="34"/>-->
+    </bean>
+
+    <!-- 3. Object injection   -->
+    <!--        <bean id="triangle_03" class="com.hitachi.Triangle_03">-->
+    <!--            <property name="pointA" ref="point1"/>-->
+    <!--            <property name="pointB" ref="point2"/>-->
+    <!--            <property name="pointC" ref="point3"/>-->
+    <!--        </bean>-->
+
+    <!--        <bean id="point1" class="com.hitachi.Point">-->
+    <!--            <property name="x" value="0"/>-->
+    <!--            <property name="y" value="0"/>-->
+    <!--        </bean>-->
+
+    <!--        <bean id="point2" class="com.hitachi.Point">-->
+    <!--            <property name="x" value="-20"/>-->
+    <!--            <property name="y" value="0"/>-->
+    <!--        </bean>-->
+
+    <!--        <bean id="point3" class="com.hitachi.Point">-->
+    <!--            <property name="x" value="0"/>-->
+    <!--            <property name="y" value="20"/>-->
+    <!--        </bean>-->
+
+    <!-- 4.   Object injection using constructor-->
+    <bean id="triangle_03_02" class="com.hitachi.Triangle_03">
+        <constructor-arg ref="point01"/>
+        <constructor-arg ref="point02"/>
+        <constructor-arg ref="point03"/>
+    </bean>
+
+    <bean id="point01" class="com.hitachi.Point">
+        <constructor-arg value="0"/>
+        <constructor-arg value="0"/>
+    </bean>
+
+    <bean id="point02" class="com.hitachi.Point">
+        <constructor-arg value="-20"/>
+        <constructor-arg value="0"/>
+    </bean>
+
+    <bean id="point03" class="com.hitachi.Point">
+        <constructor-arg value="0"/>
+        <constructor-arg value="20"/>
+    </bean>
+
+    <!-- 5. Inner beans  -->
+    <!--    <bean id="triangle_03_03" class="com.hitachi.Triangle_03">-->
+    <!--        <property name="pointA" ref="zeroPoint"/>-->
+    <!--        -->
+    <!--        <property name="pointB">-->
+    <!--            <bean class="com.hitachi.Point">-->
+    <!--                <property name="x" value="-20"/>-->
+    <!--                <property name="y" value="0"/>-->
+    <!--            </bean>-->
+    <!--        </property>-->
+    <!--        -->
+    <!--        <property name="pointC">-->
+    <!--            <bean class="com.hitachi.Point">-->
+    <!--                <property name="x" value="0"/>-->
+    <!--                <property name="y" value="20"/>-->
+    <!--            </bean>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="zeroPoint" class="com.hitachi.Point">-->
+    <!--        <property name="x" value="0"/>-->
+    <!--        <property name="y" value="0"/>-->
+    <!--    </bean>-->
+
+    <!-- 6. Alias :    -->
+    <alias name="triangle" alias="triangle-alias"/>
+
+    <!-- 7. List initialization:   -->
+    <bean id="triangle_04" class="com.hitachi.Triangle_04">
+        <property name="points">
+            <list>
+                <ref bean="point01"/>
+                <ref bean="point02"/>
+                <ref bean="point03"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 8. Auto wiring   -->
+    <!-- byName :    -->
+    <bean id="triangle_05_Autowire" class="com.hitachi.Triangle_05_Autowire" autowire="byName">
+    </bean>
+
+    <!-- byType :    -->
+
+    <!-- constructor :    -->
+
+    <bean id="pointA" class="com.hitachi.Point">
+        <constructor-arg value="0"/>
+        <constructor-arg value="0"/>
+    </bean>
+
+    <bean id="pointB" class="com.hitachi.Point">
+        <constructor-arg value="-20"/>
+        <constructor-arg value="0"/>
+    </bean>
+
+    <bean id="pointC" class="com.hitachi.Point">
+        <constructor-arg value="0"/>
+        <constructor-arg value="20"/>
+    </bean>
+
+<!-- 9. Application context aware :   -->
+    <bean id="circle_02" class="com.hitachi.Circle_02">
+        <constructor-arg ref="point01"/>
+    </bean>
+
+</beans>

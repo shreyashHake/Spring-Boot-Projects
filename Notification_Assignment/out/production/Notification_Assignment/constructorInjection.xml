@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="notification-02" class="com.hitachi.TestNotificationSender">
+        <constructor-arg name="email" ref="emailSender"/>
+        <constructor-arg name="sms" ref="smsSender"/>
+        <constructor-arg name="whatsapp" ref="whatsappSender"/>
+    </bean>
+
+    <bean id="emailSender" class="com.hitachi.EmailNotificationSender">
+        <constructor-arg value="shreyash@hitachivantara.com"/>
+        <constructor-arg value="ajay@hitachivantara.com"/>
+    </bean>
+
+    <bean id="smsSender" class="com.hitachi.SmsNotificationSender">
+        <constructor-arg value="Mihir"/>
+        <constructor-arg value="Amay"/>
+    </bean>
+
+    <bean id="whatsappSender" class="com.hitachi.WhatsAppNotificationSender">
+        <constructor-arg value="Somana"/>
+        <constructor-arg value="Satish"/>
+    </bean>
+
+</beans>

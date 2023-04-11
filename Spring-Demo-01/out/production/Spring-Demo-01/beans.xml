@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="parentTriangle" class="com.hitachi.inheritance.Triangle">
+        <property name="points">
+            <list>
+                <ref bean="pointA"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="triangle1" class="com.hitachi.inheritance" parent="parentTriangle">
+
+    </bean>
+
+    <bean id="pointA" class="com.hitachi.inheritance">
+        <constructor-arg value="0"/>
+        <constructor-arg value="0"/>
+    </bean>
+
+    <bean id="pointB" class="com.hitachi.inheritance">
+        <constructor-arg value="-20"/>
+        <constructor-arg value="0"/>
+    </bean>
+
+    <bean id="pointC" class="com.hitachi.inheritance">
+        <constructor-arg value="0"/>
+        <constructor-arg value="20"/>
+    </bean>
+
+</beans>

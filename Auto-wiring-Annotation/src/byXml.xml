@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--    1. byName : id of other bean and variable name of member variable must have same name . . .-->
+    <!--    <bean id="body" class="com.hitachi.beans.Body" autowire="byName"/>-->
+    <!--    <bean id="heart" class="com.hitachi.beans.Heart"/>-->
+
+    <!--    2. byTpe : member variable must have same class type, of which we are crating bean-->
+    <!--    <bean id="body" class="com.hitachi.beans.Body" autowire="byType"/>-->
+    <!--    <bean id="heartObject" class="com.hitachi.beans.Heart"/>-->
+
+    <!--    3. constructor : Assign using constructor ..-->
+    <bean id="body" class="com.hitachi.beans.Body" autowire="constructor"/>
+    <bean id="heartObject" class="com.hitachi.beans.Heart"/>
+
+</beans>

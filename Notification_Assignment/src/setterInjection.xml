@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="notification-01" class="com.hitachi.TestNotificationSender">
+        <property name="email" ref="emailSender"/>
+        <property name="sms" ref="smsSender"/>
+        <property name="whatsapp" ref="whatsappSender"/>
+    </bean>
+
+    <bean id="emailSender" class="com.hitachi.EmailNotificationSender">
+        <property name="sender" value="samir@hitachivantara.com"/>
+        <property name="receiver" value="amir@hitachivantara.com"/>
+    </bean>
+
+    <bean id="smsSender" class="com.hitachi.SmsNotificationSender">
+        <property name="sender" value="Ram"/>
+        <property name="receiver" value="Sham"/>
+    </bean>
+
+    <bean id="whatsappSender" class="com.hitachi.WhatsAppNotificationSender">
+        <property name="sender" value="Shreyash"/>
+        <property name="receiver" value="Ajit"/>
+    </bean>
+
+</beans>
